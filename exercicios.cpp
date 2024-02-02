@@ -109,6 +109,53 @@ int main_pass_by_value_and_reference()
     return 0;
 }
 
+int main_pointers()
+{
+
+    // Declaração de uma variável inteira
+    int variavelInteira = 42;
+
+    // Declaração de um ponteiro para inteiro
+    int *ponteiroInteiro;
+
+    // Inicialização do ponteiro com o endereço da variável
+    ponteiroInteiro = &variavelInteira;
+
+    // Imprime o valor da variável usando o ponteiro
+    std::cout << "Valor usando ponteiro: " << *ponteiroInteiro << std::endl;
+
+    // Alocação estática de um array
+    int arrayEstatico[5] = {1, 2, 3, 4, 5};
+
+    // Imprime os valores do array
+    std::cout << "Valores do array estático: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << arrayEstatico[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Alocação dinâmica de um array
+    int tamanhoArrayDinamico = 3;
+    int *arrayDinamico = new int[tamanhoArrayDinamico];
+
+    // Inicializa valores no array dinâmico
+    for (int i = 0; i < tamanhoArrayDinamico; ++i) {
+        arrayDinamico[i] = i * 10;
+    }
+
+    // Imprime os valores do array dinâmico
+    std::cout << "Valores do array dinâmico: ";
+    for (int i = 0; i < tamanhoArrayDinamico; ++i) {
+        std::cout << arrayDinamico[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Libera a memória alocada dinamicamente
+    delete[] arrayDinamico;
+
+    return 0;
+}
+
 int main()
 {
     char program;
@@ -122,7 +169,8 @@ int main()
         std::cout << "3 - Operações Condícionais"  << std::endl;
         std::cout << "4 - Repetição"  << std::endl;
         std::cout << "5 - Parâmetro por valor e referência"  << std::endl;
-        std::cout << "Qual programa execultar? [1-9]: ";
+        std::cout << "6 - Ponteiros"  << std::endl;
+        std::cout << "Qual programa execultar? [1-6]: ";
         std::cin >> program;
 
         if (program == '1') {
@@ -135,6 +183,8 @@ int main()
             return main_repetition();
         } else if (program == '5') {
             return main_pass_by_value_and_reference();
+        } else if (program == '6') {
+            return main_pointers();
         } else {
             return 0;
         }
